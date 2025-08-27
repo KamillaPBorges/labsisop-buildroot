@@ -1,0 +1,27 @@
+#!/bin/sh
+### /etc/init.d/S50systeminfo  – inicia servidor SystemInfo
+
+DAEMON=/usr/bin/systeminfo.py
+PIDFILE=/var/run/systeminfo.pid
+PORT=8080
+
+case "$1" in
+  start)
+    echo "Starting systeminfo on port $PORT..."
+    nohup /usr/bin/python3 "$DAEMON" >/dev/null 2>&1 &
+    echo $! > "$PIDFILE"
+    ;;
+  stop)
+    echo "Stopping systeminfo..."
+    [ -f "$PIDFILE" ] && kill "$(cat "$PIDFILE")" 2>/dev/null
+    rm -f "$PIDFILE"
+    ;;
+  restart|reload)
+    "$0" stop
+    "$0" start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"; exit 1;;
+esac
+
+exit 0

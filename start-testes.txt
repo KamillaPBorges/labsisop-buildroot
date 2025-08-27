@@ -1,0 +1,13 @@
+3.1:
+iperf -s
+./iperf/iperf-2.1.8/src/iperf -c 192.168.1.10 -i 1 -t 5
+
+3.2:
+iperf -s -u
+./iperf/iperf-2.1.8/src/iperf -c 192.168.1.10 -i 1 -t 5 -u
+
+3.4
+cd custom-scripts
+gcc hello.c -O2 -o hello
+./hello ou ./custom-scripts/hello    # deve imprimir: Hello World!
+cd ..
