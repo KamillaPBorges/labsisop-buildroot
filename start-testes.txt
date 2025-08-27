@@ -11,3 +11,16 @@ cd custom-scripts
 gcc hello.c -O2 -o hello
 ./hello ou ./custom-scripts/hello    # deve imprimir: Hello World!
 cd ..
+
+Trabalho1:
+
+Suba o QEMU.
+No guest, rode:
+
+ps | grep linuxstatus
+wget -qO- http://127.0.0.1:8080/status
+
+
+No host, rode:
+
+curl http://192.168.1.10:8080/status
