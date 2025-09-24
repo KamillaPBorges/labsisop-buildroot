@@ -24,3 +24,18 @@ wget -qO- http://127.0.0.1:8080/status
 No host, rode:
 
 curl http://192.168.1.10:8080/status
+
+Trabalho 2:
+
+cat /sys/block/sdb/queue/scheduler
+
+modprobe sstf-iosched
+
+echo sstf > /sys/block/sdb/queue/scheduler
+
+sector_read
+
+FIFO:
+dmesg | grep -F "[SSTF] add" | awk '{print $NF}'
+SSTF:
+dmesg | grep -F "[SSTF] dsp" | awk '{print $NF}'
